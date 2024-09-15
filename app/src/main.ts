@@ -2,9 +2,10 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import helmet from '@fastify/helmet';
+
+import { AppModule } from '@app/app.module';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestFastifyApplication>(
