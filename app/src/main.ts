@@ -1,17 +1,29 @@
-import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
+import { NestFactory } from '@nestjs/core';
 import helmet from '@fastify/helmet';
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter()
+    new FastifyAdapter(),
   );
   await app.register(helmet);
-  await app.listen(3000);
+
+  const url: string = 'localhost';
+  const port: number = 3000;
+
+  await app.listen(port, (): void => {
+    console.log(`Host: ${url}`);
+  });
 }
-bootstrap();
+
+const start: number = new Date().getTime();
+
+bootstrap().then((): void => {
+  const end: number = new Date().getTime();
+  console.log(`SecondWay: ${end - start}ms`);
+});
