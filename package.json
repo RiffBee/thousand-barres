@@ -1,0 +1,20 @@
+{
+  "name": "thousand-barres",
+  "version": "1.0.0",
+  "description": "Learning platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "cd apps/api && npm run start:dev",
+    "dev:web": "cd apps/web && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "learn"
+  ],
+  "author": "Edward Dubovic <edward.dubovic@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
